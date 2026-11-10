@@ -4,7 +4,16 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { LOCALE_COOKIE, localeLabels, locales, type Locale } from "@/i18n/config";
 
-export function LanguageSwitcher({ current, label }: { current: Locale; label: string }) {
+export function LanguageSwitcher({
+  current,
+  label,
+  path = "",
+}: {
+  current: Locale;
+  label: string;
+  /** Phần đường dẫn sau ngôn ngữ, để đổi ngôn ngữ vẫn ở đúng trang (vd "/can-ho/abc") */
+  path?: string;
+}) {
   return (
     <nav
       aria-label={label}
@@ -15,7 +24,7 @@ export function LanguageSwitcher({ current, label }: { current: Locale; label: s
         return (
           <Link
             key={l}
-            href={`/${l}`}
+            href={`/${l}${path}`}
             hrefLang={l}
             lang={l}
             title={localeLabels[l].name}

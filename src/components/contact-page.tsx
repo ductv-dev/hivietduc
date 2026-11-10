@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { MotionConfig, motion, type Variants } from "motion/react";
 import { QRCodeSVG } from "qrcode.react";
 import { track } from "@vercel/analytics";
@@ -9,10 +10,11 @@ import { toast } from "sonner";
 import { initials, site } from "@/config/site";
 import { channelMeta } from "@/components/brand-icons";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { PageBackground } from "@/components/page-background";
 import { buildVCard, channelHref, channelValue, isEnabled, type Channel } from "@/lib/contact";
 import { contactLinkProps, copyText } from "@/lib/use-contact";
 import type { Locale } from "@/i18n/config";
-import type { Dictionary } from "@/i18n/dictionaries";
+import type { ClientDictionary as Dictionary } from "@/i18n/dictionaries";
 
 const list: Variants = {
   hidden: {},
@@ -23,13 +25,22 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
 };
 
-export function ContactPage({ lang, t }: { lang: Locale; t: Dictionary }) {
+export function ContactPage({
+  lang,
+  t,
+  children,
+}: {
+  lang: Locale;
+  t: Dictionary;
+  /** Các khối bên dưới (căn hộ, khu vực, hỏi đáp) — render phía server */
+  children?: ReactNode;
+}) {
   const channels = t.channelOrder.filter(isEnabled);
   const intl = t.phoneFormat === "intl";
 
   return (
     <MotionConfig reducedMotion="user">
-      <Background />
+      <PageBackground />
 
       <div className="mx-auto flex w-full max-w-md flex-1 flex-col px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-safe lg:max-w-6xl lg:px-10">
         <div className="flex justify-end">
@@ -48,11 +59,12 @@ export function ContactPage({ lang, t }: { lang: Locale; t: Dictionary }) {
               variants={item}
               className="mt-6 flex flex-col items-center text-center text-white lg:mt-0 lg:items-start lg:text-left"
             >
-              <Avatar />
-              <h1 className="mt-4 text-3xl font-bold tracking-tight drop-shadow-sm lg:text-5xl">
-                {site.name}
+              <Avatar alt={`${site.name} — ${t.role}`} />
+              {/* H1 chứa cả tên + vai trò để Google hiểu trang nói về gì */}
+              <h1 className="mt-4 flex flex-col drop-shadow-sm">
+                <span className="text-3xl font-bold tracking-tight lg:text-5xl">{site.name}</span>
+                <span className="mt-1.5 text-lg font-semibold text-white/95 lg:text-xl">{t.role}</span>
               </h1>
-              <p className="mt-1.5 text-lg font-semibold text-white/95 lg:text-xl">{t.role}</p>
               <p className="mt-1 inline-flex items-center gap-1 text-sm text-white/80">
                 <MapPin className="size-3.5" /> {t.location}
               </p>
@@ -100,6 +112,8 @@ export function ContactPage({ lang, t }: { lang: Locale; t: Dictionary }) {
           </motion.section>
         </motion.main>
 
+        {children}
+
         <footer className="mt-10 pb-2 text-center text-[11px] text-white/60 lg:text-left">
           {site.name} · {t.role} · Photo: Andreea Popa / Unsplash
         </footer>
@@ -108,29 +122,11 @@ export function ContactPage({ lang, t }: { lang: Locale; t: Dictionary }) {
   );
 }
 
-function Background() {
-  return (
-    <div aria-hidden className="fixed inset-0 -z-10 bg-[#1f2a2e]">
-      <Image
-        src={site.background}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        quality={70}
-        className="object-cover object-[62%_center]"
-      />
-      {/* lớp phủ để chữ dễ đọc */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/60 to-black/80 lg:bg-gradient-to-r lg:from-black/70 lg:via-black/45 lg:to-black/30" />
-    </div>
-  );
-}
-
-function Avatar() {
+function Avatar({ alt }: { alt: string }) {
   return (
     <div className="relative size-24 overflow-hidden rounded-full bg-[#2563eb] text-white shadow-lg ring-4 ring-white/90 lg:size-28">
       {site.avatar ? (
-        <Image src={site.avatar} alt={site.name} fill sizes="112px" className="object-cover" priority />
+        <Image src={site.avatar} alt={alt} fill sizes="112px" className="object-cover" priority />
       ) : (
         <span className="flex size-full items-center justify-center text-3xl font-bold">{initials}</span>
       )}

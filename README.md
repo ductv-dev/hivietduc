@@ -21,6 +21,33 @@ Trang danh thiếp (Zalo, Gọi điện, WhatsApp, Telegram, Messenger) để kh
 - Trên máy tính: mỗi kênh có mã QR riêng để quét bằng điện thoại. Trên điện thoại: danh sách link.
 - Ảnh nền: Andreea Popa / Unsplash (Unsplash License). Thay ảnh: bỏ vào `public/bg/` và sửa `background`.
 
+## Thêm căn hộ trống
+
+Sửa **`src/data/listings.ts`** (có sẵn 1 căn ví dụ ở trạng thái nháp để copy):
+
+1. Bỏ ảnh vào `public/listings/<slug>/` (ảnh ngang ~1600px, < 500KB; ảnh đầu là ảnh bìa).
+2. Copy khối ví dụ, sửa thông tin, đặt `status: "available"`.
+3. Commit + push → Vercel tự deploy.
+
+Mỗi căn tự có trang riêng `/vi/can-ho/<slug>` (+ en/ru/ko), tự vào sitemap, tự hiện ở trang chủ.
+Chốt căn thì đổi `status` thành `"rented"` / `"sold"` (giữ trang, ẩn khỏi trang chủ). Chỉ bắt buộc tiếng Việt;
+thiếu bản dịch thì trang nước ngoài dùng tiếng Anh, rồi tới tiếng Việt.
+
+## SEO / Google
+
+Đã có: title + H1 có từ khoá, mô tả, `hreflang` 4 ngôn ngữ, canonical, sitemap (kèm ảnh căn hộ), robots,
+dữ liệu có cấu trúc (RealEstateAgent, FAQPage, RealEstateListing, Breadcrumb), ảnh chia sẻ theo ngôn ngữ, 404 chuẩn.
+
+Việc cần làm sau khi deploy:
+
+1. **Google Search Console** → thêm trang → chọn xác minh "Thẻ HTML" → copy mã trong `content="..."` →
+   đặt biến môi trường `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` trên Vercel → Redeploy → bấm Xác minh.
+2. Trong Search Console gửi sitemap: `https://<domain>/sitemap.xml`.
+3. **Google Business Profile** (Google Maps) cho "Sale căn hộ Đà Nẵng", gắn link trang — kênh hiệu quả nhất
+   cho tìm kiếm địa phương.
+4. Nên dùng domain riêng (vd `vietduc.vn`) thay vì `*.vercel.app`, rồi đặt `NEXT_PUBLIC_SITE_URL`.
+5. Cập nhật căn hộ đều đặn (`updatedAt`) — Google ưu tiên trang có nội dung mới.
+
 ## Chạy local
 
 ```bash

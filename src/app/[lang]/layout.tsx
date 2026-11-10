@@ -18,8 +18,13 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   const t = getDictionary(lang);
   return {
     metadataBase: new URL(site.url),
-    title: t.metaTitle,
+    title: { default: t.metaTitle, template: `%s | ${site.name}` },
     description: t.metaDescription,
+    authors: [{ name: site.name, url: `${site.url}/${lang}` }],
+    // Mã xác minh Google Search Console (đặt biến môi trường trên Vercel)
+    verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : undefined,
     openGraph: {
       type: "website",
       locale: ogLocale[lang],

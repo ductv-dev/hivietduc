@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { defaultLocale, hasLocale, LOCALE_COOKIE, locales, type Locale } from "@/i18n/config";
+import { publicListings } from "@/lib/listings";
 
 /** Chọn ngôn ngữ: cookie (khách đã chọn) > Accept-Language của trình duyệt > tiếng Việt */
 function pickLocale(req: NextRequest): Locale {
@@ -22,10 +23,21 @@ function pickLocale(req: NextRequest): Locale {
   return header.trim() ? "en" : defaultLocale;
 }
 
+const listingSlugs = new Set(publicListings().map((l) => l.slug));
+
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const hasPrefix = locales.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
-  if (hasPrefix) return;
+  if (hasPrefix) {
+    // Căn không tồn tại -> trả 404 thật trước khi trang stream (tốt cho SEO)
+    const m = pathname.match(/^\/[a-z]{2}\/can-ho\/([^/]+)\/?$/);
+    if (m && !listingSlugs.has(decodeURIComponent(m[1]))) {
+      return NextResponse.rewrite(new URL(`/${pathname.split("/")[1]}/_khong-ton-tai`, req.url), {
+        status: 404,
+      });
+    }
+    return;
+  }
 
   // Giữ nguyên query (utm_source...) khi chuyển hướng
   const url = req.nextUrl.clone();
