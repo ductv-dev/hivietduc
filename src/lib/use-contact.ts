@@ -29,9 +29,9 @@ export function copyText(text: string): Promise<boolean> {
 }
 
 /** Props cho thẻ <a> liên hệ — dùng link thật để iOS / in-app browser mở đúng app */
-export function contactLinkProps(channel: Channel) {
+export function contactLinkProps(channel: Channel, message?: string) {
   return {
-    href: channelHref(channel),
+    href: channelHref(channel, message),
     ...(channel === "phone" ? {} : { target: "_blank", rel: "noopener noreferrer" }),
     onClick: () => track("contact_click", { channel }),
   };

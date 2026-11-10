@@ -21,13 +21,13 @@ export default async function AppleIcon() {
           color: "white",
           fontSize: 84,
           fontWeight: 700,
-          fontFamily: "BVP",
+          fontFamily: "OG",
           letterSpacing: -1,
         }}
       >
         {initials}
       </div>
     ),
-    { ...size, fonts: await loadOgFonts() },
+    { ...size, fonts: await loadOgFonts(initials) },
   );
 }

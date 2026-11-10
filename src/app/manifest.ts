@@ -3,7 +3,7 @@ import { site } from "@/config/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${site.name} · ${site.title}`,
+    name: `${site.name} · Sale căn hộ Đà Nẵng`,
     short_name: site.name,
     start_url: "/",
     display: "standalone",

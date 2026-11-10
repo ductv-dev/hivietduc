@@ -1,18 +1,16 @@
 /**
  * ============================================================
- *  TOÀN BỘ THÔNG TIN CỦA TRANG NẰM Ở ĐÂY — CHỈ CẦN SỬA FILE NÀY
+ *  THÔNG TIN LIÊN HỆ — câu chữ từng ngôn ngữ nằm ở src/i18n/dictionaries.ts
  * ============================================================
  */
 
 export const site = {
   /** Tên hiển thị */
   name: "Viết Đức",
-  /** Dòng giới thiệu ngắn dưới tên */
-  title: "Cho thuê căn hộ & phòng tại Đà Nẵng",
-  /** Mô tả ngắn (1–2 câu) */
-  bio: "Nhắn mình khu vực và ngân sách, mình gửi phòng phù hợp kèm ảnh thật.",
   /** Ảnh đại diện: bỏ file vào /public rồi ghi đường dẫn, ví dụ "/avatar.jpg". Để trống = hiện chữ cái đầu */
   avatar: "",
+  /** Ảnh nền (đặt trong /public). Ảnh Cầu Vàng: Andreea Popa / Unsplash */
+  background: "/bg/golden-bridge.jpg",
 
   /**
    * Domain chính. Trên Vercel tự lấy domain production,
@@ -38,9 +36,6 @@ export const site = {
     /** Username trang/nick Facebook cho Messenger (m.me/...) — để trống để ẩn */
     messenger: "",
   },
-
-  /** Tin nhắn soạn sẵn khi khách mở WhatsApp / Telegram / Messenger */
-  defaultMessage: "Chào bạn, mình đang tìm thuê phòng ở Đà Nẵng, bạn tư vấn giúp mình nhé!",
 } as const;
 
 /** Chữ cái đầu của tên, dùng khi chưa có avatar (vd "Viết Đức" -> "VĐ") */

@@ -1,6 +1,13 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
+import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: site.url, changeFrequency: "weekly", priority: 1 }];
+  const languages = Object.fromEntries(locales.map((l) => [l, `${site.url}/${l}`]));
+  return locales.map((l) => ({
+    url: `${site.url}/${l}`,
+    changeFrequency: "monthly",
+    priority: 1,
+    alternates: { languages },
+  }));
 }

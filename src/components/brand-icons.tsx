@@ -1,7 +1,6 @@
 import type { SVGProps } from "react";
 import { Phone } from "lucide-react";
 import type { Channel } from "@/lib/contact";
-import { site } from "@/config/site";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
@@ -64,23 +63,14 @@ export function MessengerIcon(props: IconProps) {
   );
 }
 
+/** Icon + màu thương hiệu của từng kênh (chữ hiển thị nằm trong dictionaries) */
 export const channelMeta: Record<
   Channel,
-  { label: string; value: string; Icon: (p: IconProps) => React.ReactNode; color: string }
+  { Icon: (p: IconProps) => React.ReactNode; color: string }
 > = {
-  zalo: { label: "Zalo", value: site.contact.phone, Icon: ZaloIcon, color: "#0068ff" },
-  phone: {
-    label: "Gọi điện",
-    value: site.contact.phone,
-    Icon: (p) => <Phone {...(p as object)} />,
-    color: "#16a34a",
-  },
-  whatsapp: { label: "WhatsApp", value: site.contact.phone, Icon: WhatsAppIcon, color: "#25d366" },
-  telegram: {
-    label: "Telegram",
-    value: site.contact.telegram ? `@${site.contact.telegram}` : site.contact.phone,
-    Icon: TelegramIcon,
-    color: "#229ed9",
-  },
-  messenger: { label: "Messenger", value: "Facebook", Icon: MessengerIcon, color: "#0a7cff" },
+  zalo: { Icon: ZaloIcon, color: "#0068ff" },
+  phone: { Icon: (p) => <Phone {...(p as object)} />, color: "#16a34a" },
+  whatsapp: { Icon: WhatsAppIcon, color: "#25d366" },
+  telegram: { Icon: TelegramIcon, color: "#229ed9" },
+  messenger: { Icon: MessengerIcon, color: "#0a7cff" },
 };
