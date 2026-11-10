@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
-import { initials } from "@/config/site";
 import { BrandMark } from "@/lib/brand-mark";
-import { loadOgFonts } from "@/lib/og-fonts";
 
 export const contentType = "image/png";
 
@@ -17,6 +15,5 @@ export default async function Icon({ id }: { id: Promise<string | number> }) {
   return new ImageResponse(<BrandMark size={s} />, {
     width: s,
     height: s,
-    fonts: await loadOgFonts(initials),
   });
 }
