@@ -6,7 +6,7 @@
 
 export const site = {
   /** Tên hiển thị */
-  name: "Việt Đức",
+  name: "Viết Đức",
   /** Dòng giới thiệu ngắn dưới tên */
   title: "Cho thuê căn hộ & phòng tại Đà Nẵng",
   /** Mô tả ngắn (1–2 câu) */
@@ -43,7 +43,7 @@ export const site = {
   defaultMessage: "Chào bạn, mình đang tìm thuê phòng ở Đà Nẵng, bạn tư vấn giúp mình nhé!",
 } as const;
 
-/** Chữ cái đầu của tên, dùng khi chưa có avatar (vd "Việt Đức" -> "VĐ") */
+/** Chữ cái đầu của tên, dùng khi chưa có avatar (vd "Viết Đức" -> "VĐ") */
 export const initials = site.name
   .split(" ")
   .map((w) => w[0])
