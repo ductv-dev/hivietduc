@@ -3,6 +3,8 @@
  *  DANH SÁCH CĂN HỘ — thêm / sửa căn ở đây
  * ============================================================
  *
+ * Chỉ gồm căn hộ trong hệ thống NM Home (Sơn Trà, Ngũ Hành Sơn, An Hải).
+ *
  * Mỗi căn tự có trang riêng: /vi/can-ho/<slug> (và /en, /ru, /ko),
  * tự vào sitemap cho Google, tự hiện ở trang chủ (khi status = "available").
  *
@@ -14,16 +16,7 @@
  *           ngôn ngữ đó dùng tiếng Anh, thiếu tiếng Anh thì dùng tiếng Việt.
  */
 
-export const areaKeys = [
-  "hai-chau",
-  "son-tra",
-  "my-khe",
-  "ngu-hanh-son",
-  "thanh-khe",
-  "cam-le",
-  "lien-chieu",
-  "hoi-an",
-] as const;
+export const areaKeys = ["son-tra", "ngu-hanh-son", "an-hai"] as const;
 export type AreaKey = (typeof areaKeys)[number];
 
 export const listingTypes = ["studio", "1br", "2br", "3br", "duplex", "penthouse"] as const;
@@ -87,8 +80,8 @@ export const listings: Listing[] = [
     status: "draft",
     deal: "rent",
     type: "studio",
-    area: "my-khe",
-    project: "Tên dự án",
+    area: "son-tra",
+    project: "NM Home",
     price: 8_500_000,
     size: 40,
     bedrooms: 1,

@@ -65,11 +65,11 @@ export type Dictionary = {
 };
 
 const vi: Dictionary = {
-  role: "Sale căn hộ tại Đà Nẵng",
+  role: "Sale căn hộ NM Home Đà Nẵng",
   intro:
-    "Xin chào, mình là Viết Đức — sale căn hộ tại Đà Nẵng. Mình hỗ trợ mua bán và cho thuê căn hộ, studio, căn view biển. Nhắn mình nhu cầu và ngân sách, mình tư vấn miễn phí.",
+    "Xin chào, mình là Viết Đức — sale căn hộ của hệ thống NM Home tại Đà Nẵng. Mình hỗ trợ thuê căn hộ, studio NM Home ở Sơn Trà, Ngũ Hành Sơn và An Hải. Nhắn mình thời gian ở và ngân sách, mình gửi căn phù hợp kèm ảnh thật.",
   location: "Đà Nẵng, Việt Nam",
-  message: "Chào bạn, mình đang quan tâm căn hộ ở Đà Nẵng, bạn tư vấn giúp mình nhé!",
+  message: "Chào bạn, mình đang tìm thuê căn hộ NM Home ở Đà Nẵng, bạn tư vấn giúp mình nhé!",
   channelOrder: ["zalo", "phone", "whatsapp", "telegram", "messenger"],
   phoneFormat: "local",
   channels: {
@@ -86,37 +86,32 @@ const vi: Dictionary = {
   share: "Chia sẻ",
   linkCopied: "Đã copy link",
   language: "Ngôn ngữ",
-  metaTitle: "Mua bán & cho thuê căn hộ Đà Nẵng | Viết Đức",
+  metaTitle: "Thuê căn hộ NM Home Đà Nẵng – Sơn Trà, Ngũ Hành Sơn, An Hải | Viết Đức",
   metaDescription:
-    "Sale căn hộ Đà Nẵng: mua bán, cho thuê căn hộ chung cư, studio, căn view biển Mỹ Khê, Sơn Trà, Hải Châu. Tư vấn miễn phí qua Zalo 0866 791 931.",
-  areasTitle: "Khu vực mình hỗ trợ",
+    "Cho thuê căn hộ, studio NM Home tại Đà Nẵng: Sơn Trà, Ngũ Hành Sơn, An Hải. Ảnh thật, tư vấn nhanh qua Zalo 0866 791 931.",
+  areasTitle: "Khu vực căn hộ NM Home",
   areas: {
-    "hai-chau": "Hải Châu",
     "son-tra": "Sơn Trà",
-    "my-khe": "Biển Mỹ Khê",
     "ngu-hanh-son": "Ngũ Hành Sơn",
-    "thanh-khe": "Thanh Khê",
-    "cam-le": "Cẩm Lệ",
-    "lien-chieu": "Liên Chiểu",
-    "hoi-an": "Hội An",
+    "an-hai": "An Hải",
   },
   faqTitle: "Câu hỏi thường gặp",
   faq: [
     {
-      q: "Tư vấn có mất phí không?",
-      a: "Không. Mình tư vấn và dẫn đi xem căn hộ miễn phí cho khách.",
+      q: "NM Home là gì?",
+      a: "NM Home là hệ thống căn hộ, studio cho thuê tại Đà Nẵng, tập trung ở khu Sơn Trà, Ngũ Hành Sơn và An Hải.",
     },
     {
-      q: "Mình hỗ trợ những loại căn hộ nào?",
-      a: "Căn hộ chung cư, studio, căn 1–3 phòng ngủ, duplex, penthouse và căn view biển — cả mua bán lẫn cho thuê.",
+      q: "Thuê căn hộ có mất phí tư vấn không?",
+      a: "Không. Mình tư vấn và hẹn lịch xem căn miễn phí cho khách.",
     },
     {
-      q: "Người nước ngoài có thuê hoặc mua căn hộ được không?",
+      q: "Người nước ngoài có thuê được không?",
       a: "Được. Mình thường xuyên hỗ trợ khách nước ngoài và có thể tư vấn bằng tiếng Anh qua WhatsApp, Telegram.",
     },
     {
       q: "Làm sao để xem căn hộ?",
-      a: "Nhắn mình qua Zalo, WhatsApp hoặc Telegram nhu cầu và ngân sách. Mình gửi ảnh, video thật rồi hẹn lịch xem trực tiếp.",
+      a: "Nhắn mình qua Zalo, WhatsApp hoặc Telegram thời gian ở và ngân sách. Mình gửi ảnh, video thật rồi hẹn lịch xem trực tiếp.",
     },
   ],
   types: {
@@ -141,7 +136,7 @@ const vi: Dictionary = {
     security: "Bảo vệ 24/7",
   },
   listing: {
-    title: "Căn hộ đang trống",
+    title: "Căn hộ NM Home đang trống",
     subtitle: "Cập nhật thường xuyên — nhắn mình để xem thêm ảnh, video",
     rent: "Cho thuê",
     sale: "Bán",
@@ -165,11 +160,11 @@ const vi: Dictionary = {
 };
 
 const en: Dictionary = {
-  role: "Apartment Sales Agent in Da Nang",
+  role: "Apartment Rentals · NM Home Da Nang",
   intro:
-    "Hi, I'm Viet Duc — an apartment sales agent in Da Nang. I help you buy or rent apartments, studios and sea-view condos. Tell me what you need and your budget — the consultation is free.",
+    "Hi, I'm Viet Duc — sales agent for NM Home apartments in Da Nang. I help you rent NM Home apartments and studios in Son Tra, Ngu Hanh Son and An Hai. Tell me your dates and budget, and I'll send matching units with real photos.",
   location: "Da Nang, Vietnam",
-  message: "Hi Duc, I'm interested in apartments in Da Nang. Could you help me?",
+  message: "Hi Duc, I'm looking to rent an NM Home apartment in Da Nang. Could you help me?",
   channelOrder: ["whatsapp", "telegram", "zalo", "phone", "messenger"],
   phoneFormat: "intl",
   channels: {
@@ -186,37 +181,32 @@ const en: Dictionary = {
   share: "Share",
   linkCopied: "Link copied",
   language: "Language",
-  metaTitle: "Da Nang Apartments for Sale & Rent | Viet Duc",
+  metaTitle: "NM Home Apartments for Rent in Da Nang – Son Tra, Ngu Hanh Son, An Hai | Viet Duc",
   metaDescription:
-    "Viet Duc — apartment sales agent in Da Nang, Vietnam. Buy or rent apartments, studios and sea-view condos. Contact via WhatsApp, Telegram or Zalo.",
-  areasTitle: "Areas I cover",
+    "Rent NM Home apartments and studios in Da Nang: Son Tra, Ngu Hanh Son and An Hai. Real photos, quick replies on WhatsApp +84 866 791 931.",
+  areasTitle: "NM Home areas",
   areas: {
-    "hai-chau": "Hai Chau",
     "son-tra": "Son Tra",
-    "my-khe": "My Khe Beach",
     "ngu-hanh-son": "Ngu Hanh Son",
-    "thanh-khe": "Thanh Khe",
-    "cam-le": "Cam Le",
-    "lien-chieu": "Lien Chieu",
-    "hoi-an": "Hoi An",
+    "an-hai": "An Hai",
   },
   faqTitle: "FAQ",
   faq: [
     {
-      q: "Do you charge for consultation?",
-      a: "No. Consultation and apartment viewings are free for clients.",
+      q: "What is NM Home?",
+      a: "NM Home is a network of rental apartments and studios in Da Nang, located in Son Tra, Ngu Hanh Son and An Hai.",
     },
     {
-      q: "What kinds of apartments do you offer?",
-      a: "Condos, studios, 1–3 bedroom apartments, duplexes, penthouses and sea-view units — both for sale and for rent.",
+      q: "Is there a consultation fee?",
+      a: "No. Consultation and viewings are free for tenants.",
     },
     {
-      q: "Can foreigners rent or buy an apartment in Da Nang?",
-      a: "Yes. I regularly work with foreign clients and can help you in English via WhatsApp or Telegram.",
+      q: "Can foreigners rent?",
+      a: "Yes. I regularly work with foreign tenants and can help you in English via WhatsApp or Telegram.",
     },
     {
       q: "How can I view an apartment?",
-      a: "Message me on WhatsApp, Telegram or Zalo with your needs and budget. I'll send real photos and videos, then arrange a viewing.",
+      a: "Message me on WhatsApp, Telegram or Zalo with your dates and budget. I'll send real photos and videos, then arrange a viewing.",
     },
   ],
   types: {
@@ -241,7 +231,7 @@ const en: Dictionary = {
     security: "24/7 security",
   },
   listing: {
-    title: "Available apartments",
+    title: "Available NM Home apartments",
     subtitle: "Updated regularly — message me for more photos and videos",
     rent: "For rent",
     sale: "For sale",
@@ -265,11 +255,11 @@ const en: Dictionary = {
 };
 
 const ru: Dictionary = {
-  role: "Агент по продаже квартир в Дананге",
+  role: "Аренда апартаментов NM Home в Дананге",
   intro:
-    "Здравствуйте! Меня зовут Вьет Дык, я агент по продаже квартир в Дананге. Помогу купить или арендовать квартиру, студию или апартаменты с видом на море. Напишите ваши пожелания и бюджет — консультация бесплатная.",
+    "Здравствуйте! Меня зовут Вьет Дык, я менеджер по аренде апартаментов NM Home в Дананге. Помогу снять апартаменты или студию NM Home в районах Сон Тра, Нгу Хань Шон и Ан Хай. Напишите даты и бюджет — пришлю подходящие варианты с реальными фото.",
   location: "Дананг, Вьетнам",
-  message: "Здравствуйте! Меня интересуют квартиры в Дананге. Можете проконсультировать?",
+  message: "Здравствуйте! Хочу снять апартаменты NM Home в Дананге. Можете помочь?",
   channelOrder: ["telegram", "whatsapp", "zalo", "phone", "messenger"],
   phoneFormat: "intl",
   channels: {
@@ -286,37 +276,32 @@ const ru: Dictionary = {
   share: "Поделиться",
   linkCopied: "Ссылка скопирована",
   language: "Язык",
-  metaTitle: "Квартиры в Дананге — продажа и аренда | Вьет Дык",
+  metaTitle: "Аренда апартаментов NM Home в Дананге – Сон Тра, Нгу Хань Шон, Ан Хай | Вьет Дык",
   metaDescription:
-    "Вьет Дык — агент по продаже квартир в Дананге, Вьетнам. Покупка и аренда квартир, студий и апартаментов с видом на море. Telegram, WhatsApp, Zalo.",
-  areasTitle: "Районы",
+    "Аренда апартаментов и студий NM Home в Дананге: Сон Тра, Нгу Хань Шон, Ан Хай. Реальные фото, быстрый ответ в Telegram и WhatsApp +84 866 791 931.",
+  areasTitle: "Районы NM Home",
   areas: {
-    "hai-chau": "Хай Чау",
     "son-tra": "Сон Тра",
-    "my-khe": "Пляж Микхе",
     "ngu-hanh-son": "Нгу Хань Шон",
-    "thanh-khe": "Тхань Кхе",
-    "cam-le": "Кам Ле",
-    "lien-chieu": "Льен Тьеу",
-    "hoi-an": "Хойан",
+    "an-hai": "Ан Хай",
   },
   faqTitle: "Частые вопросы",
   faq: [
     {
+      q: "Что такое NM Home?",
+      a: "NM Home — сеть апартаментов и студий для аренды в Дананге, в районах Сон Тра, Нгу Хань Шон и Ан Хай.",
+    },
+    {
       q: "Консультация платная?",
-      a: "Нет. Консультация и просмотры квартир для клиентов бесплатные.",
+      a: "Нет. Консультация и просмотры для арендаторов бесплатные.",
     },
     {
-      q: "Какие квартиры вы предлагаете?",
-      a: "Апартаменты, студии, квартиры с 1–3 спальнями, дуплексы, пентхаусы и квартиры с видом на море — для покупки и аренды.",
-    },
-    {
-      q: "Может ли иностранец арендовать или купить квартиру?",
-      a: "Да. Я постоянно работаю с иностранными клиентами и общаюсь через Telegram и WhatsApp.",
+      q: "Может ли иностранец снять квартиру?",
+      a: "Да. Я постоянно работаю с иностранными арендаторами и общаюсь через Telegram и WhatsApp.",
     },
     {
       q: "Как посмотреть квартиру?",
-      a: "Напишите в Telegram, WhatsApp или Zalo ваши пожелания и бюджет. Я пришлю реальные фото и видео и договорюсь о просмотре.",
+      a: "Напишите в Telegram, WhatsApp или Zalo даты и бюджет. Я пришлю реальные фото и видео и договорюсь о просмотре.",
     },
   ],
   types: {
@@ -341,7 +326,7 @@ const ru: Dictionary = {
     security: "Охрана 24/7",
   },
   listing: {
-    title: "Свободные квартиры",
+    title: "Свободные апартаменты NM Home",
     subtitle: "Обновляется регулярно — напишите, пришлю больше фото и видео",
     rent: "Аренда",
     sale: "Продажа",
@@ -365,11 +350,11 @@ const ru: Dictionary = {
 };
 
 const ko: Dictionary = {
-  role: "다낭 아파트 전문 세일즈",
+  role: "다낭 NM Home 아파트 임대 상담",
   intro:
-    "안녕하세요, 다낭 아파트 전문 세일즈 비엣 득입니다. 아파트, 스튜디오, 오션뷰 콘도의 매매와 임대를 도와드립니다. 원하시는 조건과 예산을 알려주시면 무료로 상담해 드립니다.",
+    "안녕하세요, 다낭 NM Home 아파트 세일즈 비엣 득입니다. 선짜, 응우한선, 안하이 지역의 NM Home 아파트와 스튜디오 임대를 도와드립니다. 체류 기간과 예산을 알려주시면 실제 사진과 함께 맞는 매물을 보내드립니다.",
   location: "베트남 다낭",
-  message: "안녕하세요, 다낭 아파트에 관심이 있어 연락드립니다. 상담 부탁드립니다.",
+  message: "안녕하세요, 다낭 NM Home 아파트 임대를 알아보고 있습니다. 상담 부탁드립니다.",
   channelOrder: ["zalo", "whatsapp", "telegram", "phone", "messenger"],
   phoneFormat: "intl",
   channels: {
@@ -386,37 +371,32 @@ const ko: Dictionary = {
   share: "공유하기",
   linkCopied: "링크가 복사되었습니다",
   language: "언어",
-  metaTitle: "다낭 아파트 매매·임대 | 비엣 득",
+  metaTitle: "다낭 NM Home 아파트 임대 – 선짜, 응우한선, 안하이 | 비엣 득",
   metaDescription:
-    "다낭 아파트 전문 세일즈 비엣 득. 아파트, 스튜디오, 오션뷰 콘도 매매 및 임대 상담. Zalo, WhatsApp, Telegram으로 연락하세요.",
-  areasTitle: "상담 가능 지역",
+    "다낭 NM Home 아파트·스튜디오 임대: 선짜, 응우한선, 안하이. 실제 사진, WhatsApp·Zalo +84 866 791 931 빠른 상담.",
+  areasTitle: "NM Home 지역",
   areas: {
-    "hai-chau": "하이쩌우",
     "son-tra": "선짜",
-    "my-khe": "미케 비치",
     "ngu-hanh-son": "응우한선",
-    "thanh-khe": "탄케",
-    "cam-le": "깜레",
-    "lien-chieu": "리엔찌에우",
-    "hoi-an": "호이안",
+    "an-hai": "안하이",
   },
   faqTitle: "자주 묻는 질문",
   faq: [
     {
+      q: "NM Home은 무엇인가요?",
+      a: "NM Home은 다낭 선짜, 응우한선, 안하이 지역의 임대 아파트·스튜디오 브랜드입니다.",
+    },
+    {
       q: "상담 비용이 있나요?",
-      a: "없습니다. 상담과 아파트 방문 안내는 무료입니다.",
+      a: "없습니다. 상담과 방문 안내는 무료입니다.",
     },
     {
-      q: "어떤 아파트를 취급하나요?",
-      a: "아파트, 스튜디오, 방 1~3개, 복층, 펜트하우스, 오션뷰 매물까지 매매와 임대 모두 가능합니다.",
-    },
-    {
-      q: "외국인도 다낭에서 아파트를 임대하거나 구매할 수 있나요?",
+      q: "외국인도 임대할 수 있나요?",
       a: "네, 가능합니다. 외국인 고객을 자주 도와드리고 있으며 WhatsApp, Telegram으로 상담해 드립니다.",
     },
     {
       q: "아파트는 어떻게 보러 가나요?",
-      a: "Zalo, WhatsApp 또는 Telegram으로 원하시는 조건과 예산을 보내주세요. 실제 사진과 영상을 보내드리고 방문 일정을 잡아드립니다.",
+      a: "Zalo, WhatsApp 또는 Telegram으로 체류 기간과 예산을 보내주세요. 실제 사진과 영상을 보내드리고 방문 일정을 잡아드립니다.",
     },
   ],
   types: {
@@ -441,7 +421,7 @@ const ko: Dictionary = {
     security: "24시간 경비",
   },
   listing: {
-    title: "현재 매물",
+    title: "현재 임대 가능한 NM Home 아파트",
     subtitle: "수시로 업데이트됩니다 — 더 많은 사진과 영상은 메시지로 요청하세요",
     rent: "임대",
     sale: "매매",
