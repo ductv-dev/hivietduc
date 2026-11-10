@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# hivietduc — Trang liên hệ cho thuê phòng Đà Nẵng
 
-## Getting Started
+Trang danh thiếp đơn giản (Zalo, Gọi điện, WhatsApp, Telegram, Messenger) để khách quét QR và liên hệ.
 
-First, run the development server:
+**Stack:** Next.js 16 · Tailwind v4 · shadcn/ui · Motion · qrcode.react · Vercel Analytics
+
+## Sửa thông tin
+
+Mọi thông tin nằm trong **`src/config/site.ts`**: tên, giới thiệu, số điện thoại, Zalo, Telegram, Messenger, ảnh đại diện.
+
+- Ảnh đại diện: bỏ file vào `public/avatar.jpg` rồi đặt `avatar: "/avatar.jpg"`.
+- `telegram: ""` → nút Telegram mở bằng số điện thoại (cần bật *Settings → Privacy → Phone number → Who can find me: Everybody*). Có username thì điền vào sẽ chắc hơn.
+- `messenger: ""` → ẩn nút Messenger.
+
+## Chạy local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Vào [vercel.com/new](https://vercel.com/new) → Import repo `ductv-dev/hivietduc` → Deploy (không cần cấu hình gì).
+2. (Tuỳ chọn) Gắn domain riêng thì thêm biến môi trường `NEXT_PUBLIC_SITE_URL=https://domain-cua-ban.com`.
+3. Bật **Analytics** trong tab Analytics của project để xem lượt truy cập.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tạo mã QR
 
-## Learn More
+Mở `https://<domain>/qr` trên trang đã deploy:
 
-To learn more about Next.js, take a look at the following resources:
+- Chọn nơi đăng (Facebook / Zalo / In ấn) để gắn `utm_source` vào link.
+- **Tải poster**: ảnh 1080×1350 có QR, tên, SĐT — dùng để đăng vào comment.
+- **QR trơn**: chỉ có mã QR, dùng để in.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Tạo QR **sau khi** đã có domain chính thức. Đổi domain thì phải tạo lại QR.
