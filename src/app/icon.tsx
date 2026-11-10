@@ -1,33 +1,22 @@
 import { ImageResponse } from "next/og";
 import { initials } from "@/config/site";
+import { BrandMark } from "@/lib/brand-mark";
 import { loadOgFonts } from "@/lib/og-fonts";
 
-export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
+const sizes = [32, 192, 512];
 
-export default async function Icon() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 16,
-          background: "#2563eb",
-          color: "white",
-          fontSize: 30,
-          fontWeight: 700,
-          fontFamily: "OG",
-          letterSpacing: -1,
-        }}
-      >
-        {initials}
-      </div>
-    ),
-    { ...size, fonts: await loadOgFonts(initials) },
-  );
+/** Favicon (32) + icon PWA (192, 512) → /icon/32, /icon/192, /icon/512 */
+export function generateImageMetadata() {
+  return sizes.map((s) => ({ id: String(s), size: { width: s, height: s }, contentType }));
+}
+
+export default async function Icon({ id }: { id: Promise<string | number> }) {
+  const s = Number(await id);
+  return new ImageResponse(<BrandMark size={s} />, {
+    width: s,
+    height: s,
+    fonts: await loadOgFonts(initials),
+  });
 }
