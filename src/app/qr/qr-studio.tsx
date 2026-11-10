@@ -37,7 +37,8 @@ export function QrStudio() {
     const qr = qrRef.current;
     if (!qr) return;
     await document.fonts.ready;
-    const canvas = kind === "poster" ? drawPoster(qr) : drawPlain(qr);
+    const avatar = site.avatar ? await loadImage(site.avatar).catch(() => null) : null;
+    const canvas = kind === "poster" ? drawPoster(qr, avatar) : drawPlain(qr, avatar);
     const a = document.createElement("a");
     a.href = canvas.toDataURL("image/png");
     a.download = `${kind === "poster" ? "poster" : "qr"}-${source || "link"}.png`;
@@ -53,12 +54,21 @@ export function QrStudio() {
 
       {/* Xem trước */}
       <div className="mx-auto w-full max-w-[320px] rounded-3xl border bg-white p-6 text-center text-[#111827] shadow-sm">
-        <p className="text-sm font-semibold">Quét mã để liên hệ thuê phòng</p>
+        <p className="text-sm font-semibold">Quét mã để liên hệ · Sale căn hộ Đà Nẵng</p>
         <div className="relative mx-auto mt-4 w-[78%]">
           <QRCodeSVG value={link} level="H" marginSize={0} fgColor={INK} className="h-auto w-full" />
-          <span className="absolute top-1/2 left-1/2 flex size-[22%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-[#2563eb] text-xs font-bold text-white">
-            {initials}
-          </span>
+          {site.avatar ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={site.avatar}
+              alt=""
+              className="absolute top-1/2 left-1/2 size-[22%] -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white object-cover"
+            />
+          ) : (
+            <span className="absolute top-1/2 left-1/2 flex size-[22%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-[#2563eb] text-xs font-bold text-white">
+              {initials}
+            </span>
+          )}
         </div>
         <p className="mt-4 text-lg font-bold">{site.name}</p>
         <p className="text-sm text-gray-500">Zalo · {site.contact.phone}</p>
@@ -140,12 +150,36 @@ export function QrStudio() {
 
 const font = () => getComputedStyle(document.body).fontFamily;
 
-function drawLogo(ctx: CanvasRenderingContext2D, cx: number, cy: number, d: number) {
+function loadImage(src: string) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+function drawLogo(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  d: number,
+  avatar: HTMLImageElement | null,
+) {
   ctx.save();
   ctx.beginPath();
   ctx.arc(cx, cy, d / 2 + d * 0.1, 0, Math.PI * 2);
   ctx.fillStyle = "#fff";
   ctx.fill();
+  if (avatar) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, d / 2, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(avatar, cx - d / 2, cy - d / 2, d, d);
+    ctx.restore();
+    return;
+  }
   ctx.beginPath();
   ctx.arc(cx, cy, d / 2, 0, Math.PI * 2);
   ctx.fillStyle = BLUE;
@@ -158,7 +192,7 @@ function drawLogo(ctx: CanvasRenderingContext2D, cx: number, cy: number, d: numb
   ctx.restore();
 }
 
-function drawPlain(qr: HTMLCanvasElement) {
+function drawPlain(qr: HTMLCanvasElement, avatar: HTMLImageElement | null) {
   const pad = 64;
   const c = document.createElement("canvas");
   c.width = c.height = qr.width + pad * 2;
@@ -166,11 +200,11 @@ function drawPlain(qr: HTMLCanvasElement) {
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, c.width, c.height);
   ctx.drawImage(qr, pad, pad);
-  drawLogo(ctx, c.width / 2, c.height / 2, qr.width * 0.2);
+  drawLogo(ctx, c.width / 2, c.height / 2, qr.width * 0.2, avatar);
   return c;
 }
 
-function drawPoster(qr: HTMLCanvasElement) {
+function drawPoster(qr: HTMLCanvasElement, avatar: HTMLImageElement | null) {
   const W = 1080;
   const H = 1350;
   const c = document.createElement("canvas");
@@ -185,7 +219,7 @@ function drawPoster(qr: HTMLCanvasElement) {
 
   ctx.fillStyle = BLUE;
   ctx.font = `600 36px ${ff}`;
-  ctx.fillText("CHO THUÊ PHÒNG ĐÀ NẴNG", W / 2, 140);
+  ctx.fillText("SALE CĂN HỘ ĐÀ NẴNG", W / 2, 140);
   ctx.fillStyle = INK;
   ctx.font = `700 64px ${ff}`;
   ctx.fillText("Quét mã để liên hệ", W / 2, 225);
@@ -195,7 +229,7 @@ function drawPoster(qr: HTMLCanvasElement) {
   const y = 300;
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(qr, x, y, size, size);
-  drawLogo(ctx, W / 2, y + size / 2, size * 0.2);
+  drawLogo(ctx, W / 2, y + size / 2, size * 0.2, avatar);
 
   ctx.fillStyle = INK;
   ctx.font = `700 60px ${ff}`;

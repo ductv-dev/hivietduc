@@ -15,9 +15,9 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-async function background() {
+async function dataUrl(...path: string[]) {
   "use cache";
-  const b = await readFile(join(process.cwd(), "assets", "og-bg.jpg"));
+  const b = await readFile(join(process.cwd(), ...path));
   return `data:image/jpeg;base64,${b.toString("base64")}`;
 }
 
@@ -34,7 +34,7 @@ export default async function OgImage({ params }: { params: Promise<{ lang: stri
     (
       <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", fontFamily: "OG" }}>
         <img
-          src={await background()}
+          src={await dataUrl("assets", "og-bg.jpg")}
           alt=""
           width={1200}
           height={630}
@@ -61,22 +61,32 @@ export default async function OgImage({ params }: { params: Promise<{ lang: stri
             color: "white",
           }}
         >
-          <div
-            style={{
-              width: 112,
-              height: 112,
-              borderRadius: 999,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "#2563eb",
-              border: "5px solid white",
-              fontSize: 44,
-              fontWeight: 700,
-            }}
-          >
-            {initials}
-          </div>
+          {site.avatar ? (
+            <img
+              src={await dataUrl("public", site.avatar)}
+              alt=""
+              width={140}
+              height={140}
+              style={{ width: 140, height: 140, borderRadius: 999, border: "5px solid white", objectFit: "cover" }}
+            />
+          ) : (
+            <div
+              style={{
+                width: 112,
+                height: 112,
+                borderRadius: 999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#2563eb",
+                border: "5px solid white",
+                fontSize: 44,
+                fontWeight: 700,
+              }}
+            >
+              {initials}
+            </div>
+          )}
           <div style={{ marginTop: 28, fontSize: 76, fontWeight: 700, letterSpacing: -1 }}>{site.name}</div>
           <div style={{ marginTop: 4, fontSize: 40, fontWeight: 700, opacity: 0.92 }}>{t.role}</div>
           <div style={{ marginTop: 6, fontSize: 28, opacity: 0.75 }}>{t.location}</div>

@@ -8,7 +8,7 @@ export const site = {
   /** Tên hiển thị */
   name: "Viết Đức",
   /** Ảnh đại diện: bỏ file vào /public rồi ghi đường dẫn, ví dụ "/avatar.jpg". Để trống = hiện chữ cái đầu */
-  avatar: "",
+  avatar: "/avatar.jpg",
   /** Ảnh nền (đặt trong /public). Ảnh Cầu Vàng: Andreea Popa / Unsplash */
   background: "/bg/golden-bridge.jpg",
 
